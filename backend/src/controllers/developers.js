@@ -7,29 +7,33 @@ module.exports = {
 
     return response.status(302).json(developers);
   },
+
   async post(request, response) {
     const data = request.body;
+    await Developer.create(data);
 
-    let results = await Developer.create(data);
-
-    return response.status(201).json(results);
+    return response.status(201).json(data);
   },
-  async put(resquest, response) {
-    const { nome, nascimento, cpf } = request.body;
 
-    const data = {
-      nome,
-      nascimento,
-      cpf,
-    };
+  async put(request, response) {
+    const data = request.body;
+    await Developer.update(data);
 
-    let results = Developer.update(data);
-
-    return response.status(201).json(results);
+    return response.status(201).json(data);
   },
+
   async delete(request, response) {
-    await Developer.delete(request.body.id);
+    const devId = request.params.id;
 
-    return response.status(200);
+    if (!devId) {
+      return response
+        .status(404)
+        .json({ error: true, message: 'Dev não encontrado' });
+    } else {
+      await Developer.delete(devId);
+      return response
+        .status(200)
+        .json({ error: false, message: 'Successfully deleted' });
+    }
   },
 };

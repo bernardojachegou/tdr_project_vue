@@ -6,13 +6,13 @@ async function createTables() {
   await db.query(`CREATE TABLE tdr_devs(
     id serial PRIMARY KEY,
     nome VARCHAR(60) NOT NULL,
-    nascimento timestamp without time zone NOT NULL,
+    nascimento VARCHAR(15) NOT NULL,
     cpf VARCHAR(15) NOT NULL
   )`);
 
   await db.end();
 
-  console.log('Tabelas criadas');
+  console.log('Tabela criada');
 }
 
 createTables();
