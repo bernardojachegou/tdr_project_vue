@@ -16,10 +16,17 @@ module.exports = {
   },
 
   async put(request, response) {
+    const devId = request.params.id;
     const data = request.body;
-    await Developer.update(data);
 
-    return response.status(201).json(data);
+    let results = await Developer.update({
+      id: devId,
+      nome: data.nome,
+      nascimento: data.nascimento,
+      cpf: data.cpf,
+    });
+
+    return response.status(201).json(results.rows);
   },
 
   async delete(request, response) {

@@ -8,7 +8,7 @@ routes.get('/', function (req, res) {
 
 routes.get('/developers', developer.index);
 routes.post('/developers', developer.post);
-routes.put('/developers', developer.put);
+routes.put('/developers/:id', developer.put);
 routes.delete('/developers/:id', developer.delete);
 
 module.exports = routes;
