@@ -10,25 +10,22 @@
         <div class="information">
           <div class="item">
             <h4>Nome:</h4>
-            <input type="text" v-model="form.nome"/>
-            <p v-show="!form.nome">Campo obrigatório</p>
+            <input type="text" placeholder="Nome completo" v-model="form.nome"/>
+            <p v-show="!form.nome">* Campo obrigatório</p>
           </div>
           <div class="item">
             <h4>Data de Nascimento:</h4>
-            <input type="text" v-model="form.nascimento" v-mask="['##/##/####']"/>
-            <p v-show="!form.nascimento">Campo obrigatório</p>
+            <input type="text" placeholder="XX/XX/XXXX" v-model="form.nascimento" v-mask="['##/##/####']"/>
+            <p v-show="!form.nascimento">* Campo obrigatório</p>
           </div>
           <div class="item">
             <h4>CPF:</h4>
             
-            <input type="text" v-model="form.cpf" v-mask="['###.###.###-##']"/>
-            <p v-show="!form.cpf">Campo obrigatório</p>
+            <input type="text" placeholder="Somente números" v-model="form.cpf" v-mask="['###.###.###-##']"/>
+            <p v-show="!form.cpf">* Campo obrigatório</p>
           </div>
         </div>
-        <button class="button active" @click="addDeveloper" :disabled="disableSave">Enviar</button>
-        <div>
-          <button :disabled="disableSave" @click="addDeveloper">Teste</button>
-        </div>
+        <button class="button" @click="addDeveloper" :disabled="disableSave">Enviar</button>
         
       </div>
     </div>
@@ -114,10 +111,14 @@ export default {
   font-weight: bold;
   letter-spacing: 1px;
   cursor: pointer;
+  border: 2px solid #2d3d5b;
+
 }
 
-.button:hover {
-  background: #405782;
+.button:hover:enabled {
+  color: #405782;
+  background-color: white;
+  border: 2px solid #405782;
 }
 
 .information .item {
@@ -132,7 +133,7 @@ export default {
 }
 
 .information .item p {
-  color: rgb(173, 0, 0);
+  color: #befff5;
   font-size: 16px;
   margin-left: 8px;
 }
