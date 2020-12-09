@@ -9,15 +9,15 @@
       <div class="information">
         <div class="item">
           <h4>Nome:</h4>
-          <p>Michel Franklin Silva Bernardo</p>
+          <p>{{developer.nome}}</p>
         </div>
         <div class="item">
           <h4>Data de Nascimento:</h4>
-          <p>06/06/1991</p>
+          <p>{{developer.nascimento}}</p>
         </div>
         <div class="item">
           <h4>CPF:</h4>
-          <p>467.456.956-30</p>
+          <p>{{developer.cpf}}</p>
         </div>
       </div>
     </div>
@@ -30,6 +30,16 @@ export default {
   name: "DeveloperShow",
   components: {
     Navbar,
+  },
+  data: () => ({
+    developer: Object
+  }),
+    created() {
+      if(!this.$route.params.developer) {
+        return this.$router.push("/list")
+      }
+      this.developer = this.$route.params.developer
+
   },
 };
 </script>

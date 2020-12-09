@@ -1,11 +1,11 @@
-const Developer = require('../models/Developer');
+const Developer = require("../models/Developer");
 
 module.exports = {
   async index(request, response) {
     let results = await Developer.all();
     const developers = results.rows;
 
-    return response.status(302).json(developers);
+    return response.json(developers);
   },
 
   async post(request, response) {
@@ -35,12 +35,12 @@ module.exports = {
     if (!devId) {
       return response
         .status(404)
-        .json({ error: true, message: 'Dev não encontrado' });
+        .json({ error: true, message: "Dev não encontrado" });
     } else {
       await Developer.delete(devId);
       return response
         .status(200)
-        .json({ error: false, message: 'Successfully deleted' });
+        .json({ error: false, message: "Successfully deleted" });
     }
   },
 };

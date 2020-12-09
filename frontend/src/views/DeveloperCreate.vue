@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar />
-    <form action="">
+    <div>
       <div class="card table-container">
         <div class="title">
           <h1>Cadastro de desenvolvedor</h1>
@@ -10,32 +10,61 @@
         <div class="information">
           <div class="item">
             <h4>Nome:</h4>
-            <input type="text" />
+            <input type="text" v-model="form.nome"/>
+            <p v-show="!form.nome">Campo obrigatório</p>
           </div>
           <div class="item">
             <h4>Data de Nascimento:</h4>
-            <input type="text" />
+            <input type="text" v-model="form.nascimento" v-mask="['##/##/####']"/>
+            <p v-show="!form.nascimento">Campo obrigatório</p>
           </div>
           <div class="item">
             <h4>CPF:</h4>
-            <input type="text" />
+            
+            <input type="text" v-model="form.cpf" v-mask="['###.###.###-##']"/>
+            <p v-show="!form.cpf">Campo obrigatório</p>
           </div>
         </div>
-        <button type="submit">Enviar</button>
+        <button class="button active" @click="addDeveloper" :disabled="disableSave">Enviar</button>
+        <div>
+          <button :disabled="disableSave" @click="addDeveloper">Teste</button>
+        </div>
+        
       </div>
-    </form>
+    </div>
   </div>
 </template>
 
 <script>
 import Navbar from "../components/Navbar";
+import api from '../services/api';
+import {mask} from 'vue-the-mask';
 
 export default {
+  directives: {mask},
   name: "DevCreate",
-  components: {
-    Navbar,
+  data: () => ({
+    form: {
+      nome: '',
+      nascimento: '',
+      cpf: '',
+    },
+  }),
+  methods: {
+    addDeveloper() {
+      api.post('/developers', this.form).then(() => this.form = {}, (err) => console.log(err))
+    }
   },
+  computed: {
+    disableSave() {
+      return !this.form.nome || !this.form.nascimento || !this.form.cpf
+    }
+  },
+  components: {
+    Navbar
+  }
 };
+
 </script>
 
 <style scoped>
@@ -75,7 +104,7 @@ export default {
   margin: 48px 0;
 }
 
-.table-container button {
+.table-container .button {
   width: 200px;
   padding: 12px;
   border-radius: 6px;
@@ -87,7 +116,7 @@ export default {
   cursor: pointer;
 }
 
-.table-container button:hover {
+.button:hover {
   background: #405782;
 }
 
@@ -100,6 +129,12 @@ export default {
 
 .information .item h4 {
   font-size: 18px;
+}
+
+.information .item p {
+  color: rgb(173, 0, 0);
+  font-size: 16px;
+  margin-left: 8px;
 }
 
 .information .item input {

@@ -12,11 +12,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Michel</td>
-            <td>06/06/1991</td>
-            <td>056.456.965.60</td>
-            <td><a href="#">Ver</a></td>
+          <tr v-for="developer in developers" :key="developer.id">
+            <td>{{developer.nome}}</td>
+            <td>{{developer.nascimento}}</td>
+            <td>{{developer.cpf}}</td>
+            <td><a @click="seeDeveloper(developer)">Ver</a></td>
           </tr>
         </tbody>
       </table>
@@ -26,11 +26,31 @@
 
 <script>
 import Navbar from "../components/Navbar";
+import api from '../services/api';
+
 export default {
   name: "DevList",
   components: {
     Navbar,
   },
+  data: () => ({
+    developers: Array
+  }),
+  methods: {
+    seeDeveloper(payload) {
+      this.$router.push({
+        name: 'DeveloperShow',
+        params: {
+          developer: payload,
+        }
+      }) 
+      console.log(payload)
+    }
+  },
+  created() {
+    api.get('/developers')
+    .then((value) => this.developers = value.data)
+  }
 };
 </script>
 
