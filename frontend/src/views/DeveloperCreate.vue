@@ -4,29 +4,44 @@
     <div>
       <div class="card table-container">
         <div class="title">
-          <h1>Cadastro de desenvolvedor</h1>
+          <h1>Developer register</h1>
         </div>
         <hr />
         <div class="information">
           <div class="item">
-            <h4>Nome:</h4>
-            <input type="text" placeholder="Nome completo" v-model="form.nome"/>
-            <p v-show="!form.nome">* Campo obrigatório</p>
+            <h4>Name</h4>
+            <input
+              type="text"
+              placeholder="Complete name"
+              v-model="form.nome"
+            />
+            <p v-show="!form.nome">* Required</p>
           </div>
           <div class="item">
-            <h4>Data de Nascimento:</h4>
-            <input type="text" placeholder="XX/XX/XXXX" v-model="form.nascimento" v-mask="['##/##/####']"/>
-            <p v-show="!form.nascimento">* Campo obrigatório</p>
+            <h4>Birthdate</h4>
+            <input
+              type="text"
+              placeholder="XX/XX/XXXX"
+              v-model="form.nascimento"
+              v-mask="['##/##/####']"
+            />
+            <p v-show="!form.nascimento">* Required</p>
           </div>
           <div class="item">
-            <h4>CPF:</h4>
-            
-            <input type="text" placeholder="Somente números" v-model="form.cpf" v-mask="['###.###.###-##']"/>
-            <p v-show="!form.cpf">* Campo obrigatório</p>
+            <h4>Social number (CPF)</h4>
+
+            <input
+              type="text"
+              placeholder="Only numbers"
+              v-model="form.cpf"
+              v-mask="['###.###.###-##']"
+            />
+            <p v-show="!form.cpf">* Required</p>
           </div>
         </div>
-        <button class="button" @click="addDeveloper" :disabled="disableSave">Enviar</button>
-        
+        <button class="button" @click="addDeveloper" :disabled="disableSave">
+          Submit
+        </button>
       </div>
     </div>
   </div>
@@ -34,34 +49,36 @@
 
 <script>
 import Navbar from "../components/Navbar";
-import api from '../services/api';
-import {mask} from 'vue-the-mask';
+import api from "../services/api";
+import { mask } from "vue-the-mask";
 
 export default {
-  directives: {mask},
+  directives: { mask },
   name: "DevCreate",
   data: () => ({
     form: {
-      nome: '',
-      nascimento: '',
-      cpf: '',
+      nome: "",
+      nascimento: "",
+      cpf: "",
     },
   }),
   methods: {
     addDeveloper() {
-      api.post('/developers', this.form).then(() => this.form = {}, (err) => console.log(err))
-    }
+      api.post("/developers", this.form).then(
+        () => (this.form = {}),
+        (err) => console.log(err)
+      );
+    },
   },
   computed: {
     disableSave() {
-      return !this.form.nome || !this.form.nascimento || !this.form.cpf
-    }
+      return !this.form.nome || !this.form.nascimento || !this.form.cpf;
+    },
   },
   components: {
-    Navbar
-  }
+    Navbar,
+  },
 };
-
 </script>
 
 <style scoped>
@@ -91,6 +108,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  line-height: 50px;
 }
 
 .table-container .information {
@@ -104,6 +122,7 @@ export default {
 .table-container .button {
   width: 200px;
   padding: 12px;
+  margin: 0 12px;
   border-radius: 6px;
   outline: none;
   background-color: #2d3d5b;
@@ -111,14 +130,11 @@ export default {
   font-weight: bold;
   letter-spacing: 1px;
   cursor: pointer;
-  border: 2px solid #2d3d5b;
-
+  transition: 200ms;
 }
 
 .button:hover:enabled {
-  color: #405782;
-  background-color: white;
-  border: 2px solid #405782;
+  background-color: #202633;
 }
 
 .information .item {

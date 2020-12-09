@@ -2,10 +2,11 @@
   <header>
     <div class="links">
       <router-link :to="{ name: 'DeveloperList' }">
-        <a>Listar</a>
+        <a>List</a>
       </router-link>
+      <div class="vl"></div>
       <router-link :to="{ name: 'DeveloperCreate' }">
-        <a>Criar</a>
+        <a>Add</a>
       </router-link>
     </div>
   </header>
@@ -27,9 +28,17 @@ header {
   box-sizing: border-box;
 }
 
+header .vl {
+  border-left: 2px solid white;
+  height: 28px;
+}
+
 header .links {
   font-size: 22px;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .links a {
@@ -37,10 +46,11 @@ header .links {
   text-decoration: none;
   text-transform: uppercase;
   position: relative;
+  padding: 0 8px;
 }
 
 .links a:hover {
-  border-bottom: 1px solid white;
+  color: #befff5;
 }
 
 .links a + a {

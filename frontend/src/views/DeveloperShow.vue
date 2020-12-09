@@ -3,22 +3,26 @@
     <Navbar />
     <div class="card table-container">
       <div class="title">
-        <h1>Informações sobre o desenvolvedor</h1>
+        <h1>Developer's information</h1>
       </div>
       <hr />
       <div class="information">
         <div class="item">
-          <h4>Nome:</h4>
-          <p>{{developer.nome}}</p>
+          <h4>Name</h4>
+          <p>{{ developer.nome }}</p>
         </div>
         <div class="item">
-          <h4>Data de Nascimento:</h4>
-          <p>{{developer.nascimento}}</p>
+          <h4>Birthdate</h4>
+          <p>{{ developer.nascimento }}</p>
         </div>
         <div class="item">
-          <h4>CPF:</h4>
-          <p>{{developer.cpf}}</p>
+          <h4>Social number (CPF)</h4>
+          <p>{{ developer.cpf }}</p>
         </div>
+      </div>
+      <div class="button-box">
+        <button class="button edit">Edit</button>
+        <button class="button delete">Delete</button>
       </div>
     </div>
   </div>
@@ -32,14 +36,13 @@ export default {
     Navbar,
   },
   data: () => ({
-    developer: Object
+    developer: Object,
   }),
-    created() {
-      if(!this.$route.params.developer) {
-        return this.$router.push("/list")
-      }
-      this.developer = this.$route.params.developer
-
+  created() {
+    if (!this.$route.params.developer) {
+      return this.$router.push("/list");
+    }
+    this.developer = this.$route.params.developer;
   },
 };
 </script>
@@ -68,6 +71,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  line-height: 50px;
 }
 
 .table-container .information {
@@ -92,5 +96,37 @@ export default {
   font-size: 18px;
   margin-left: 12px;
   border-bottom: 1px solid white;
+}
+
+.table-container .button-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-box .button {
+  width: 200px;
+  padding: 12px;
+  margin: 0 12px;
+  border-radius: 6px;
+  outline: none;
+  background-color: #2d3d5b;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+.button:hover {
+  background-color: #202633;
+}
+
+.button-box .delete {
+  background-color: rgb(138, 28, 50);
+}
+
+.button-box .delete:hover {
+  background-color: rgb(77, 14, 27);
 }
 </style>

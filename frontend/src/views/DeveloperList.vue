@@ -5,18 +5,18 @@
       <table width="100%">
         <thead>
           <tr>
-            <th>Nome</th>
-            <th>Data de nascimento</th>
-            <th>CPF</th>
-            <th>Opções</th>
+            <th>Name</th>
+            <th>Birthdate</th>
+            <th>Social number (CPF)</th>
+            <th>Options</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="developer in developers" :key="developer.id">
-            <td>{{developer.nome}}</td>
-            <td>{{developer.nascimento}}</td>
-            <td>{{developer.cpf}}</td>
-            <td><a @click="seeDeveloper(developer)">Ver</a></td>
+            <td>{{ developer.nome }}</td>
+            <td>{{ developer.nascimento }}</td>
+            <td>{{ developer.cpf }}</td>
+            <td><a @click="seeDeveloper(developer)">See</a></td>
           </tr>
         </tbody>
       </table>
@@ -26,7 +26,7 @@
 
 <script>
 import Navbar from "../components/Navbar";
-import api from '../services/api';
+import api from "../services/api";
 
 export default {
   name: "DevList",
@@ -34,23 +34,22 @@ export default {
     Navbar,
   },
   data: () => ({
-    developers: Array
+    developers: Array,
   }),
   methods: {
     seeDeveloper(payload) {
       this.$router.push({
-        name: 'DeveloperShow',
+        name: "DeveloperShow",
         params: {
           developer: payload,
-        }
-      }) 
-      console.log(payload)
-    }
+        },
+      });
+      console.log(payload);
+    },
   },
   created() {
-    api.get('/developers')
-    .then((value) => this.developers = value.data)
-  }
+    api.get("/developers").then((value) => (this.developers = value.data));
+  },
 };
 </script>
 
@@ -104,11 +103,11 @@ export default {
   font-size: 12px;
   font-weight: 700;
   border-radius: 4px;
-  transition: 100ms;
+  transition: 200ms;
 }
 
 .table-container tbody tr td:last-child a:hover {
-  background-color: #40826d;
+  background-color: #202633;
   color: white;
 }
 
