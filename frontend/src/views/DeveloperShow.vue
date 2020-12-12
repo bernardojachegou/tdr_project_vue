@@ -13,7 +13,7 @@
         </div>
         <div class="item">
           <h4>Birthdate</h4>
-          <p>{{ developer.nascimento }}</p>
+          <p>{{ developer.nascimento | moment }}</p>
         </div>
         <div class="item">
           <h4>Social number (CPF)</h4>
@@ -30,6 +30,7 @@
 
 <script>
 import Navbar from "../components/Navbar";
+import moment from "moment";
 import api from "../services/api";
 export default {
   name: "DeveloperShow",
@@ -46,6 +47,9 @@ export default {
     this.developer = this.$route.params.developer;
   },
   methods: {
+    moment: function () {
+      return moment();
+    },
     removeDeveloper() {
       api.delete(`/developers/${this.$route.params.developer.id}`).then(
         () => {
@@ -61,6 +65,11 @@ export default {
           developer: this.developer,
         },
       });
+    },
+  },
+  filters: {
+    moment: function (date) {
+      return moment(date).format("DD/MMM/YYYY");
     },
   },
 };

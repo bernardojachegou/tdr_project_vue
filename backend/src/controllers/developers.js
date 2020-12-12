@@ -5,11 +5,16 @@ module.exports = {
     let results = await Developer.all();
     const developers = results.rows;
 
-    return response.json(developers);
+    if (developers == 0) {
+      return response.status(406).json({ error: true, message: "empty table" });
+    } else {
+      return response.json(developers);
+    }
   },
 
   async post(request, response) {
     const data = request.body;
+
     await Developer.create(data);
 
     return response.status(201).json(data);
@@ -23,7 +28,7 @@ module.exports = {
     if (!dev) {
       return response
         .status(404)
-        .json({ error: true, message: "Dev não encontrado" });
+        .json({ error: true, message: "Developer not found" });
     } else {
       await Developer.update({
         id: devId,
@@ -32,7 +37,7 @@ module.exports = {
         cpf: data.cpf,
       });
       return response
-        .status(201)
+        .status(202)
         .json({ error: false, message: "Successfully updated" });
     }
   },
@@ -44,7 +49,7 @@ module.exports = {
     if (!dev) {
       return response
         .status(404)
-        .json({ error: true, message: "Dev não encontrado" });
+        .json({ error: true, message: "Developer not found" });
     } else {
       await Developer.delete(devId);
       return response

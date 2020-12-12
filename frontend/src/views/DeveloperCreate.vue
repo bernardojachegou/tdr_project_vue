@@ -19,11 +19,7 @@
           </div>
           <div class="item">
             <h4>Birthdate</h4>
-            <input
-              type="date"
-              placeholder="XX/XX/XXXX"
-              v-model="form.birthdate"
-            />
+            <input type="date" v-model="form.birthdate" />
             <p v-show="!form.birthdate">* Required</p>
           </div>
           <div class="item">
@@ -63,6 +59,7 @@ export default {
   }),
   created() {
     if (this.$route.params.developer) {
+      console.log(this.$route.params.developer);
       this.form.name = this.$route.params.developer.nome;
       this.form.birthdate = this.$route.params.developer.nascimento;
       this.form.socialNumber = this.$route.params.developer.cpf;
