@@ -14,7 +14,7 @@
         <tbody>
           <tr v-for="developer in developers" :key="developer.id">
             <td>{{ developer.nome }}</td>
-            <td>{{ developer.nascimento }}</td>
+            <td>{{ developer.nascimento | moment }}</td>
             <td>{{ developer.cpf }}</td>
             <td><a @click="seeDeveloper(developer)">See</a></td>
           </tr>
@@ -27,6 +27,7 @@
 <script>
 import Navbar from "../components/Navbar";
 import api from "../services/api";
+import moment from "moment";
 
 export default {
   name: "DevList",
@@ -37,6 +38,9 @@ export default {
     developers: Array,
   }),
   methods: {
+    moment: function () {
+      return moment();
+    },
     seeDeveloper(payload) {
       this.$router.push({
         name: "DeveloperShow",
@@ -49,6 +53,11 @@ export default {
   },
   created() {
     api.get("/developers").then((value) => (this.developers = value.data));
+  },
+  filters: {
+    moment: function (date) {
+      return moment(date).format("DD MMM YYYY");
+    },
   },
 };
 </script>

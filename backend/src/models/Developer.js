@@ -1,8 +1,19 @@
-const db = require('../config/db');
+const db = require("../config/db");
 
 module.exports = {
   all() {
     return db.query(`SELECT * from tdr_devs`);
+  },
+
+  async retrieve(id) {
+    const results = await db.query(
+      `SELECT * from tdr_devs WHERE id = $1 limit 1`,
+      [id]
+    );
+    if (results.rows && results.rows.length) {
+      return results.rows[0];
+    }
+    return null;
   },
 
   create(data) {

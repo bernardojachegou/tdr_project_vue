@@ -13,19 +13,18 @@
             <input
               type="text"
               placeholder="Complete name"
-              v-model="form.nome"
+              v-model="form.name"
             />
-            <p v-show="!form.nome">* Required</p>
+            <p v-show="!form.name">* Required</p>
           </div>
           <div class="item">
             <h4>Birthdate</h4>
             <input
-              type="text"
+              type="date"
               placeholder="XX/XX/XXXX"
-              v-model="form.nascimento"
-              v-mask="['##/##/####']"
+              v-model="form.birthdate"
             />
-            <p v-show="!form.nascimento">* Required</p>
+            <p v-show="!form.birthdate">* Required</p>
           </div>
           <div class="item">
             <h4>Social number (CPF)</h4>
@@ -33,10 +32,10 @@
             <input
               type="text"
               placeholder="Only numbers"
-              v-model="form.cpf"
+              v-model="form.socialNumber"
               v-mask="['###.###.###-##']"
             />
-            <p v-show="!form.cpf">* Required</p>
+            <p v-show="!form.socialNumber">* Required</p>
           </div>
         </div>
         <button class="button" @click="addDeveloper" :disabled="disableSave">
@@ -57,14 +56,37 @@ export default {
   name: "DevCreate",
   data: () => ({
     form: {
-      nome: "",
-      nascimento: "",
-      cpf: "",
+      name: "",
+      birthdate: "",
+      socialNumber: "",
     },
   }),
+  created() {
+    if (this.$route.params.developer) {
+      this.form.name = this.$route.params.developer.nome;
+      this.form.birthdate = this.$route.params.developer.nascimento;
+      this.form.socialNumber = this.$route.params.developer.cpf;
+    }
+  },
   methods: {
     addDeveloper() {
-      api.post("/developers", this.form).then(
+      const form = {
+        nome: this.form.name,
+        nascimento: this.form.birthdate,
+        cpf: this.form.socialNumber,
+      };
+
+      if (this.$route.params.developer) {
+        api.put(`/developers/${this.$route.params.developer.id}`, form).then(
+          () => {
+            return this.$router.push("/list");
+          },
+          (err) => console.log(err)
+        );
+        return;
+      }
+
+      api.post("/developers", form).then(
         () => (this.form = {}),
         (err) => console.log(err)
       );
@@ -72,7 +94,7 @@ export default {
   },
   computed: {
     disableSave() {
-      return !this.form.nome || !this.form.nascimento || !this.form.cpf;
+      return !this.form.name || !this.form.birthdate || !this.form.socialNumber;
     },
   },
   components: {

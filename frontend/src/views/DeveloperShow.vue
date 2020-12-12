@@ -21,8 +21,8 @@
         </div>
       </div>
       <div class="button-box">
-        <button class="button edit">Edit</button>
-        <button class="button delete">Delete</button>
+        <button class="button edit" @click="editDeveloper">Edit</button>
+        <button class="button delete" @click="removeDeveloper">Delete</button>
       </div>
     </div>
   </div>
@@ -30,6 +30,7 @@
 
 <script>
 import Navbar from "../components/Navbar";
+import api from "../services/api";
 export default {
   name: "DeveloperShow",
   components: {
@@ -43,6 +44,24 @@ export default {
       return this.$router.push("/list");
     }
     this.developer = this.$route.params.developer;
+  },
+  methods: {
+    removeDeveloper() {
+      api.delete(`/developers/${this.$route.params.developer.id}`).then(
+        () => {
+          return this.$router.push("/list");
+        },
+        (err) => console.log(err)
+      );
+    },
+    editDeveloper() {
+      this.$router.push({
+        name: "DeveloperCreate",
+        params: {
+          developer: this.developer,
+        },
+      });
+    },
   },
 };
 </script>

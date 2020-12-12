@@ -17,22 +17,31 @@ module.exports = {
 
   async put(request, response) {
     const devId = request.params.id;
+    const dev = await Developer.retrieve(devId);
     const data = request.body;
 
-    let results = await Developer.update({
-      id: devId,
-      nome: data.nome,
-      nascimento: data.nascimento,
-      cpf: data.cpf,
-    });
-
-    return response.status(201).json(results.rows);
+    if (!dev) {
+      return response
+        .status(404)
+        .json({ error: true, message: "Dev não encontrado" });
+    } else {
+      await Developer.update({
+        id: devId,
+        nome: data.nome,
+        nascimento: data.nascimento,
+        cpf: data.cpf,
+      });
+      return response
+        .status(201)
+        .json({ error: false, message: "Successfully updated" });
+    }
   },
 
   async delete(request, response) {
     const devId = request.params.id;
+    const dev = await Developer.retrieve(devId);
 
-    if (!devId) {
+    if (!dev) {
       return response
         .status(404)
         .json({ error: true, message: "Dev não encontrado" });
