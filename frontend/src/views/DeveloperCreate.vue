@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar />
+    <TheNavbar />
     <div>
       <div class="card table-container">
         <div class="title">
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import Navbar from "../components/Navbar";
+import TheNavbar from "../components/TheNavbar";
 import api from "../services/api";
 import { mask } from "vue-the-mask";
 
@@ -95,12 +95,12 @@ export default {
     },
   },
   components: {
-    Navbar,
+    TheNavbar,
   },
 };
 </script>
 
-<style scoped>
+<style lang="scss">
 .card {
   background-color: #2d5b54;
   border-radius: 24px;

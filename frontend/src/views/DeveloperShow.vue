@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar />
+    <TheNavbar />
     <div class="card table-container">
       <div class="title">
         <h1>Developer's information</h1>
@@ -29,13 +29,13 @@
 </template>
 
 <script>
-import Navbar from "../components/Navbar";
+import TheNavbar from "../components/TheNavbar";
 import moment from "moment";
 import api from "../services/api";
 export default {
   name: "DeveloperShow",
   components: {
-    Navbar,
+    TheNavbar,
   },
   data: () => ({
     developer: Object,
