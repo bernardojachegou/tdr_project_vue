@@ -25,8 +25,8 @@
 </template>
 
 <script>
-import TheNavbar from "../components/TheNavbar";
-import api from "../services/api";
+import TheNavbar from "@/components/TheNavbar";
+import api from "@/services/api";
 import moment from "moment";
 
 export default {
@@ -63,5 +63,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/scss/list.scss";
+@import "@/scss/modules/developerList";
 </style>

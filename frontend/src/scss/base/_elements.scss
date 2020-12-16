@@ -1,0 +1,98 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: reduce), (update: slow) {
+  *,
+  ::before,
+  ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}
+
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.25),
+    only screen and (min-device-pixel-ratio: 1.25),
+    only screen and (min-resolution: 200dpi),
+    only screen and (min-resolution: 1.25dppx) {
+    -webkit-font-smoothing: subpixel-antialiased;
+  }
+}
+
+*:focus {
+  outline: none;
+}
+
+img,
+iframe,
+object,
+embed,
+video {
+  height: auto;
+  max-width: 100%;
+}
+
+object,
+embed,
+video {
+  height: auto;
+}
+
+figure {
+  margin: 0;
+}
+
+label {
+  cursor: pointer;
+}
+
+sup,
+sub {
+  font-size: 50%;
+}
+
+// ==========================================================================
+// Project specifics
+// ==========================================================================
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  color: white;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #2d3d5b;
+  font-size: $global-font-size;
+  color: white;
+}
+
+// ::selection {
+// }
+
+// ::-moz-selection {
+// }
+
+// input::placeholder {}
+// textarea::placeholder {}
+// input::-webkit-input-placeholder {}
+// textarea::-webkit-input-placeholder {}
+// input::-moz-placeholder {}
+// textarea::-moz-placeholder {}
+// input:-ms-input-placeholder {}
+// textarea:-ms-input-placeholder {}
