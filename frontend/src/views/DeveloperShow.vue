@@ -29,9 +29,11 @@
 </template>
 
 <script>
+/* eslint-disable */
 import TheNavbar from "@/components/TheNavbar";
 import api from "@/services/api";
 import moment from "moment";
+
 export default {
   name: "DeveloperShow",
   components: {
@@ -76,5 +78,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/scss/modules/developerShow";
+@import "@/scss/modules/developerShow.scss";
 </style>

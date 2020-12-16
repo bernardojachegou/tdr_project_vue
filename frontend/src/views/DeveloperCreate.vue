@@ -101,5 +101,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/scss/modules/developerCreate";
+@import "@/scss/modules/developerCreate.scss";
 </style>
