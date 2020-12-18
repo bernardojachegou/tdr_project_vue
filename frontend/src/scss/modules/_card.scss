@@ -1,0 +1,14 @@
+.div-card {
+  background-color: $secondary;
+  border-radius: 24px;
+  width: 800px;
+  min-height: 400px;
+  margin: 45px auto;
+  display: flex;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.div-card-form {
+  flex-direction: column;
+}

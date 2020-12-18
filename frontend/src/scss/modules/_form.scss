@@ -1,0 +1,31 @@
+.div-title-form {
+  text-align: center;
+}
+
+.div-information-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 24px 0;
+}
+
+.div-item-form {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 12px 0;
+}
+
+// information tags;
+
+.p-required-validation-form {
+  color: #befff5;
+  font-size: 16px;
+  margin-left: 8px;
+}
+
+.p-data-info {
+  font-size: 18px;
+  margin-left: 12px;
+  border-bottom: 1px solid white;
+}

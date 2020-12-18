@@ -2,47 +2,58 @@
   <div>
     <TheNavbar />
     <div>
-      <div class="card table-container">
-        <div class="title">
+      <div class="div-card div-card-form">
+        <div class="div-title-form">
           <h1>Developer register</h1>
         </div>
         <hr />
-        <div class="information">
-          <div class="item">
-            <h4>Name</h4>
+        <div class="div-information-form">
+          <div class="div-item-form">
+            <h2>Name</h2>
             <input
+              class="input-data"
               type="text"
               placeholder="Complete name"
               v-model="form.name"
             />
-            <p v-show="!form.name">* Required</p>
+            <p class="p-required-validation-form" v-show="!form.name">
+              * Required
+            </p>
           </div>
-          <div class="item">
-            <h4>Birthdate</h4>
-            <input type="date" v-model="form.birthdate" />
-            <p v-show="!form.birthdate">* Required</p>
+          <div class="div-item-form">
+            <h2>Birthdate</h2>
+            <input class="input-data" type="date" v-model="form.birthdate" />
+            <p class="p-required-validation-form" v-show="!form.birthdate">
+              * Required
+            </p>
           </div>
-          <div class="item">
-            <h4>Social number (CPF)</h4>
+          <div class="div-item-form">
+            <h2>Social number (CPF)</h2>
 
             <input
+              class="input-data"
               type="text"
               placeholder="Only numbers"
               v-model="form.socialNumber"
               v-mask="['###.###.###-##']"
             />
-            <p v-show="!form.socialNumber">* Required</p>
+            <p class="p-required-validation-form" v-show="!form.socialNumber">
+              * Required
+            </p>
           </div>
         </div>
-        <button class="button" @click="addDeveloper" :disabled="disableSave">
-          Submit
-        </button>
+        <div class="div-button-box">
+          <button class="button" @click="addDeveloper" :disabled="disableSave">
+            Submit
+          </button>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+/* eslint-disable */
 import TheNavbar from "@/components/TheNavbar";
 import api from "@/services/api";
 import { mask } from "vue-the-mask";
@@ -100,6 +111,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-@import "@/scss/modules/developerCreate.scss";
-</style>
+<style lang="scss"></style>

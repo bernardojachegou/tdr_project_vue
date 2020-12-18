@@ -1,0 +1,53 @@
+// Box used to center the button;
+
+.div-button-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Default button style;
+
+.button {
+  width: 200px;
+  padding: 12px;
+  margin: 0 12px;
+  border-radius: 6px;
+  outline: none;
+  background-color: $primary;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 200ms;
+  opacity: 0.6;
+}
+
+.button:enabled {
+  opacity: 1;
+}
+
+.button:enabled:hover {
+  background-color: $primaryDark;
+}
+
+// Button used inside the table;
+
+.table-button {
+  opacity: 1;
+  padding: 8px 16px;
+}
+
+.table-button:hover {
+  background-color: $primaryDark;
+}
+
+// Delete button style;
+
+.delete-button {
+  background-color: $delete;
+}
+
+.delete-button:hover {
+  background-color: $deleteDark !important;
+}

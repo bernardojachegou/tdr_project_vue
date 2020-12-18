@@ -1,28 +1,30 @@
 <template>
   <div>
     <TheNavbar />
-    <div class="card table-container">
-      <div class="title">
+    <div class="div-card div-card-form">
+      <div class="div-title-form">
         <h1>Developer's information</h1>
       </div>
       <hr />
-      <div class="information">
-        <div class="item">
-          <h4>Name</h4>
-          <p>{{ developer.nome }}</p>
+      <div class="div-information-form">
+        <div class="div-item-form">
+          <h2>Name</h2>
+          <p class="p-data-info">{{ developer.nome }}</p>
         </div>
-        <div class="item">
-          <h4>Birthdate</h4>
-          <p>{{ developer.nascimento | moment }}</p>
+        <div class="div-item-form">
+          <h2>Birthdate</h2>
+          <p class="p-data-info">{{ developer.nascimento | moment }}</p>
         </div>
-        <div class="item">
-          <h4>Social number (CPF)</h4>
-          <p>{{ developer.cpf }}</p>
+        <div class="div-item-form">
+          <h2>Social number (CPF)</h2>
+          <p class="p-data-info">{{ developer.cpf }}</p>
         </div>
       </div>
-      <div class="button-box">
-        <button class="button edit" @click="editDeveloper">Edit</button>
-        <button class="button delete" @click="removeDeveloper">Delete</button>
+      <div class="div-button-box">
+        <button class="button" @click="editDeveloper">Edit</button>
+        <button class="button delete-button" @click="removeDeveloper">
+          Delete
+        </button>
       </div>
     </div>
   </div>
@@ -77,6 +79,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-@import "@/scss/modules/developerShow.scss";
-</style>
+<style lang="scss" scoped></style>

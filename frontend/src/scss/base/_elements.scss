@@ -77,9 +77,72 @@ sub {
 
 body {
   font-family: "Roboto", sans-serif;
-  background-color: #2d3d5b;
+  background-color: $primary;
   font-size: $global-font-size;
   color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  margin: 0.4rem;
+}
+
+// Lines
+
+hr {
+  border-top: 1px solid white;
+  width: 100%;
+}
+
+// Table
+
+table {
+  border-spacing: 0;
+}
+
+th {
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+td,
+th {
+  padding: 16px;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+td:first-child {
+  align-items: center;
+}
+
+td:last-child a,
+> a {
+  background-color: #2d3d5b;
+  padding: 8px 24px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 4px;
+  transition: 200ms;
+
+  &:hover {
+    background-color: #202633;
+    color: white;
+  }
+}
+
+tr th:last-child,
+td:last-child {
+  text-align: center;
 }
 
 // ::selection {

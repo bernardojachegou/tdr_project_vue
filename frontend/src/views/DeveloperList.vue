@@ -1,7 +1,7 @@
 <template>
   <div>
     <TheNavbar />
-    <div class="table-container">
+    <div class="div-card">
       <table width="100%">
         <thead>
           <tr>
@@ -16,7 +16,11 @@
             <td>{{ developer.nome }}</td>
             <td>{{ developer.nascimento | moment }}</td>
             <td>{{ developer.cpf }}</td>
-            <td><a @click="seeDeveloper(developer)">See</a></td>
+            <td>
+              <a class="button table-button" @click="seeDeveloper(developer)"
+                >See</a
+              >
+            </td>
           </tr>
         </tbody>
       </table>
@@ -25,6 +29,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import TheNavbar from "@/components/TheNavbar";
 import api from "@/services/api";
 import moment from "moment";
@@ -62,6 +67,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-@import "@/scss/modules/developerList.scss";
-</style>
+<style lang="scss" scoped></style>

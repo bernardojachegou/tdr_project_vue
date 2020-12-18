@@ -1,0 +1,31 @@
+.header-navbar {
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  padding: 32px 0px;
+  text-align: center;
+  border-bottom: 1px solid;
+  box-sizing: border-box;
+}
+
+.div-vertical-line {
+  border-left: 2px solid;
+  height: 28px;
+}
+
+.div-links {
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.a-link {
+  text-transform: uppercase;
+  position: relative;
+  padding: 0 8px;
+}
+
+.a-link:hover {
+  color: $onHover;
+}
