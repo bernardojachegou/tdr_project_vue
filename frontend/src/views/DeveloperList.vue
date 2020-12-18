@@ -17,7 +17,9 @@
             <td>{{ developer.nascimento | moment }}</td>
             <td>{{ developer.cpf }}</td>
             <td>
-              <a class="button table-button" @click="seeDeveloper(developer)"
+              <a
+                class="button table-button default-button-color"
+                @click="seeDeveloper(developer)"
                 >See</a
               >
             </td>

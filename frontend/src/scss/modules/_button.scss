@@ -14,7 +14,6 @@
   margin: 0 12px;
   border-radius: 6px;
   outline: none;
-  background-color: $primary;
   font-size: 14px;
   font-weight: bold;
   letter-spacing: 1px;
@@ -25,10 +24,6 @@
 
 .button:enabled {
   opacity: 1;
-}
-
-.button:enabled:hover {
-  background-color: $primaryDark;
 }
 
 // Button used inside the table;
@@ -42,12 +37,22 @@
   background-color: $primaryDark;
 }
 
+// Default button style;
+
+.default-button-color {
+  background-color: $primary;
+}
+
+.default-button-color:enabled:hover {
+  background-color: $primaryDark;
+}
+
 // Delete button style;
 
-.delete-button {
+.delete-button-color {
   background-color: $delete;
 }
 
-.delete-button:hover {
-  background-color: $deleteDark !important;
+.delete-button-color:hover {
+  background-color: $deleteDark;
 }

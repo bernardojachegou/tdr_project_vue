@@ -21,8 +21,10 @@
         </div>
       </div>
       <div class="div-button-box">
-        <button class="button" @click="editDeveloper">Edit</button>
-        <button class="button delete-button" @click="removeDeveloper">
+        <button class="button default-button-color" @click="editDeveloper">
+          Edit
+        </button>
+        <button class="button delete-button-color" @click="removeDeveloper">
           Delete
         </button>
       </div>

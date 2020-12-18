@@ -43,7 +43,11 @@
           </div>
         </div>
         <div class="div-button-box">
-          <button class="button" @click="addDeveloper" :disabled="disableSave">
+          <button
+            class="button default-button-color"
+            @click="addDeveloper"
+            :disabled="disableSave"
+          >
             Submit
           </button>
         </div>
