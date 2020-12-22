@@ -6,6 +6,10 @@
   border-radius: 6px;
   width: 250px;
   font-size: 14px;
+
+  @include breakpoint(small-only) {
+    margin-top: 8px;
+  }
 }
 
 .input-data::placeholder {

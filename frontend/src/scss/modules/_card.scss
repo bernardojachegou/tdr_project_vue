@@ -7,8 +7,18 @@
   display: flex;
   padding: 40px;
   box-sizing: border-box;
+
+  @include breakpoint(medium-only) {
+    overflow-x: auto;
+    display: contents;
+  }
 }
 
+table {
+  @include breakpoint(small-only) {
+    margin-top: 100px;
+  }
+}
 .div-card-form {
   flex-direction: column;
 }

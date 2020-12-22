@@ -5,6 +5,11 @@
   text-align: center;
   border-bottom: 1px solid;
   box-sizing: border-box;
+
+  @include breakpoint(small-only) {
+    position: fixed;
+    top: 0;
+  }
 }
 
 .div-vertical-line {

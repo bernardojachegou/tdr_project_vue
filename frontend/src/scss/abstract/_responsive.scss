@@ -1,0 +1,11 @@
+@include breakpoint(medium-only) {
+  .div-card {
+    display: contents;
+  }
+}
+
+.default-button-color {
+  @include breakpoint(medium-only) {
+    background-color: $secondary;
+  }
+}
