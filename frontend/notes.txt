@@ -1,0 +1,3 @@
+1. Verify validation into the inputs;
+2. Apply confirmation in delete function;
+3. Apply register confirmation;
