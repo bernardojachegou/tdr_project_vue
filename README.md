@@ -1,6 +1,10 @@
 <h1 align="center">
-    <img alt="Happy" title="Happy" src="https://imgur.com/T95XqQ6.png" height="500px"/>
+    TDR Informática - Cadastro de Devs
 </h1>
+
+<h2 align="center">
+    <img alt="TDR" title="TDR" src="https://imgur.com/T95XqQ6.png" height="500px"/>
+</h2>
 
 ## :iphone:   Technologies
 
@@ -30,8 +34,11 @@ $ git clone bernardojachegou/tdr_project_vue/backend
 # Install the dependencies
 $ npm install
 
+# set the database config (Postgresql)
+$ src/config/db.js
+
 # run the files in src/config to create the database (Postgresql)
-$ npm install
+$ node src/config/1_createTables.js
 
 # Start the server
 $ npm start
