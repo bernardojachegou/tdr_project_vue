@@ -1,5 +1,5 @@
 <h1 align="center">
-    TDR Informática - Cadastro de Devs
+    TDR Informática - Developer register
 </h1>
 
 <h2 align="center">
